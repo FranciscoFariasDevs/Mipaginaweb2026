@@ -54,7 +54,7 @@ const PROJECTS = [
     sub:'// herramienta-lirica',
     desc:'Web app para encontrar rimas, generar letras y asistir en la composición musical. Ideal para raperos, poetas y compositores.',
     tags:['JavaScript','Web App','NLP'],
-    banner: '/rimificador2.png',
+    banner: '/rimificador.png',
     logo:   null,
     bannerStyle: 'cover',
     status:'done', icon:'🎤', github:'https://github.com/FranciscoFariasDevs',
@@ -63,6 +63,7 @@ const PROJECTS = [
 const WEB_WORKS = [
   { title:'Intranet Beach', url:'https://intranet.beach.cl', icon:'🏖️', img:'/intranet-beach.png', desc:'Intranet corporativa completa con autenticación, dashboards y módulos administrativos para empresa costera.', tags:['Intranet','Full Stack','Corporativo'] },
   { title:'Proimtec',       url:'https://www.proimtec.cl',    icon:'⚙️', img:'/proimtec.png',      desc:'Sitio web corporativo para empresa de tecnología e ingeniería. Diseño responsive y optimizado para SEO.', tags:['Web Corp','Diseño','SEO'] },
+  { title:'Rimificador',    url:'https://github.com/FranciscoFariasDevs', icon:'🎤', img:'/rimificador2.png', desc:'Herramienta web lírica para encontrar rimas y componer letras. Desplegada y activa para usuarios reales.', tags:['JavaScript','NLP','Web App'] },
 ]
 const SKILLS = [
   { name:'JavaScript / TypeScript', pct:90, color:'#f7df1e' },
@@ -111,8 +112,9 @@ const BOOT_MSGS = [
 const Ig   = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
 const Li   = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
 const Gh   = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-const Mail = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-const Arr  = () => <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+const Mail    = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+const Arr     = () => <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+const Spotify = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
 
 /* ─── BOOT SCREEN ────────────────────────────────────────── */
 function BootScreen({ onDone }) {
@@ -364,12 +366,13 @@ function About() {
             </div>
           </div>
           <div className="about-text-col fade-up d2">
-            <p>Soy <strong>Francisco Farías</strong>, Ingeniero Civil en Informática con especialidad en Desarrollo de Software y Diseñador de Videojuegos de Chile 🇨🇱.</p>
-            <p>Desarrollo <strong>aplicaciones de escritorio</strong> con Electron, apps móviles con Flutter y sistemas web completos con React y Node.js. También dirijo el servicio técnico <strong>Refresca Tu Nae</strong>.</p>
+            <p>Soy <strong>Francisco Farías</strong>, Ingeniero Civil en Informática con especialidad en Desarrollo de Software, IA Engineer y Diseñador de Videojuegos de Chile 🇨🇱.</p>
+            <p>Actualmente me encuentro trabajando en <strong>soluciones empresariales robustas</strong>: ERP e intranets a medida, sistemas de gestión, automatizaciones con IA y aplicaciones multiplataforma para empresas reales.</p>
+            <p>Desarrollo apps móviles con Flutter, sistemas web completos con React y Node.js, y dirijo el servicio técnico <strong>Refresca Tu Nae</strong>.</p>
             <p>Tengo una fuerte faceta creativa como artista bajo el alias <strong>nvdie_flow</strong> y estoy desarrollando <strong>Metal Golpe X</strong>, un videojuego arcade ambientado en Santiago de Chile.</p>
-            <p>Mi misión: llevar tecnología de calidad a personas reales, combinando ingeniería, arte y pasión por los videojuegos.</p>
             <div className="about-chips">
-              <span className="about-chip">▶ 5+ PROYECTOS</span>
+              <span className="about-chip">▶ ERP EMPRESARIAL</span>
+              <span className="about-chip">▶ IA ENGINEER</span>
               <span className="about-chip">▶ GAME DEV</span>
               <span className="about-chip">▶ ARTISTA DIGITAL</span>
               <span className="about-chip">▶ SERVICIO TÉC.</span>
@@ -541,6 +544,41 @@ function WebWork() {
 }
 
 /* ─── CONTACT ───────────────────────────────────────────── */
+function ContactForm() {
+  const [form, setForm] = useState({ name:'', email:'', msg:'' })
+  const [sent, setSent] = useState(false)
+  const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }))
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const sub  = encodeURIComponent(`Portafolio · ${form.name}`)
+    const body = encodeURIComponent(`Nombre: ${form.name}\nEmail: ${form.email}\n\n${form.msg}`)
+    window.open(`mailto:fariseodesarrollador@gmail.com?subject=${sub}&body=${body}`)
+    setSent(true)
+    setTimeout(() => setSent(false), 4000)
+  }
+  return (
+    <form className="cform" onSubmit={handleSubmit}>
+      <div className="cform-row">
+        <div className="cform-field">
+          <label>Nombre</label>
+          <input value={form.name} onChange={set('name')} placeholder="Tu nombre" required />
+        </div>
+        <div className="cform-field">
+          <label>Email</label>
+          <input type="email" value={form.email} onChange={set('email')} placeholder="tu@email.com" required />
+        </div>
+      </div>
+      <div className="cform-field">
+        <label>Mensaje</label>
+        <textarea value={form.msg} onChange={set('msg')} placeholder="Cuéntame sobre tu proyecto..." rows={5} required />
+      </div>
+      <button type="submit" className="btn-ps" style={{ width:'100%', justifyContent:'center' }}>
+        {sent ? '✅ MENSAJE PREPARADO — REVISA TU CLIENTE DE CORREO' : '📩 ENVIAR MENSAJE'}
+      </button>
+    </form>
+  )
+}
+
 function Contact() {
   return (
     <section id="contact" className="section contact-section">
@@ -549,12 +587,53 @@ function Contact() {
         <h2 className="sec-title">Hablemos <span>👾</span></h2>
         <div className="sec-line" />
         <p className="contact-desc">¿Tienes un proyecto? Estoy disponible para freelance, colaboraciones y trabajo remoto desde Chile.</p>
-        <div className="contact-wrap">
-          <a href="https://www.linkedin.com/in/francisco-javier-farias-espinoza-15153a27b/" target="_blank" rel="noreferrer" className="cbtn cbtn-li"><Li /> LINKEDIN</a>
-          <a href="https://www.instagram.com/nvdie_flow" target="_blank" rel="noreferrer" className="cbtn cbtn-ig"><Ig /> NVDIE_FLOW</a>
-          <a href="https://www.instagram.com/refresca_tu_nae" target="_blank" rel="noreferrer" className="cbtn cbtn-ig"><Ig /> REFRESCA_TU_NAE</a>
-          <a href="https://github.com/FranciscoFariasDevs" target="_blank" rel="noreferrer" className="cbtn cbtn-gh"><Gh /> GITHUB</a>
-          <a href="mailto:fariseodesarrollador@gmail.com" className="cbtn cbtn-em"><Mail /> EMAIL</a>
+
+        {/* ── Redes sociales ── */}
+        <div className="social-grid">
+          <a href="https://www.instagram.com/nvdie_flow" target="_blank" rel="noreferrer" className="social-card sc-ig">
+            <div className="social-card-icon"><Ig /></div>
+            <div className="social-card-info">
+              <span className="social-card-handle">@nvdie_flow</span>
+              <span className="social-card-label">Arte · Música · Lifestyle</span>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/refresca_tu_nae" target="_blank" rel="noreferrer" className="social-card sc-ig">
+            <div className="social-card-icon"><Ig /></div>
+            <div className="social-card-info">
+              <span className="social-card-handle">@refresca_tu_nae</span>
+              <span className="social-card-label">Técnico Computacional</span>
+            </div>
+          </a>
+          <a href="https://open.spotify.com/artist/nvdie-flow" target="_blank" rel="noreferrer" className="social-card sc-sp">
+            <div className="social-card-icon"><Spotify /></div>
+            <div className="social-card-info">
+              <span className="social-card-handle">Nvdie Flow</span>
+              <span className="social-card-label">Artista en Spotify</span>
+            </div>
+          </a>
+          <a href="https://github.com/FranciscoFariasDevs" target="_blank" rel="noreferrer" className="social-card sc-gh">
+            <div className="social-card-icon"><Gh /></div>
+            <div className="social-card-info">
+              <span className="social-card-handle">FranciscoFariasDevs</span>
+              <span className="social-card-label">GitHub · Open Source</span>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/francisco-javier-farias-espinoza-15153a27b/" target="_blank" rel="noreferrer" className="social-card sc-li">
+            <div className="social-card-icon"><Li /></div>
+            <div className="social-card-info">
+              <span className="social-card-handle">Francisco Farías E.</span>
+              <span className="social-card-label">LinkedIn · Profesional</span>
+            </div>
+          </a>
+        </div>
+
+        {/* ── Formulario ── */}
+        <div className="cform-wrap fade-up">
+          <div className="cform-header">
+            <Mail />
+            <span>Envíame un mensaje directo</span>
+          </div>
+          <ContactForm />
         </div>
       </div>
     </section>
