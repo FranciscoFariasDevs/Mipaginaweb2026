@@ -297,6 +297,51 @@
 }
 
 /* ═══════════════════════════════════════════════
+   TECH STACK
+═══════════════════════════════════════════════ */
+.tech-section { background: linear-gradient(180deg,rgba(129,140,248,.03),transparent); }
+.tech-cats { display: flex; flex-direction: column; gap: 44px; }
+
+.tech-cat-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px; font-weight: 700; margin-bottom: 18px;
+  display: flex; align-items: center; gap: 8px;
+}
+.tech-cat-title::after {
+  content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.07);
+}
+
+.tech-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.tech-chip {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 18px; border-radius: 12px;
+  background: var(--surface); border: 1px solid rgba(129,140,248,.13);
+  font-size: 14px; font-weight: 500; color: #cbd5e1;
+  transition: transform .3s, border-color .3s, box-shadow .3s, background .3s;
+  cursor: default; animation: chip-in .5s ease both;
+}
+@keyframes chip-in {
+  from { opacity:0; transform: scale(.85) translateY(10px); }
+  to   { opacity:1; transform: scale(1) translateY(0); }
+}
+.tech-chip:hover {
+  transform: translateY(-4px) scale(1.04);
+  border-color: rgba(129,140,248,.45);
+  background: rgba(129,140,248,.1);
+  box-shadow: 0 8px 24px rgba(129,140,248,.15);
+  color: #e2e8f0;
+}
+.tech-icon {
+  width: 28px; height: 28px; object-fit: contain;
+  filter: brightness(.9); transition: filter .3s, transform .3s;
+}
+.tech-chip:hover .tech-icon {
+  filter: brightness(1.15) drop-shadow(0 0 6px rgba(129,140,248,.5));
+  transform: rotate(-5deg) scale(1.1);
+}
+
+/* ═══════════════════════════════════════════════
    PROJECTS — GAMIFIED CARDS
 ═══════════════════════════════════════════════ */
 .projects-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(320px,1fr)); gap: 22px; }
