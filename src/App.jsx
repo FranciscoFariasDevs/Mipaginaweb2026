@@ -242,19 +242,24 @@ function Hero({ visible }) {
   const ref = useRef(null)
   useEffect(() => {
     if (!visible) return
-    import('animejs').then(({ default: anime }) => {
+    import('animejs').then(({ animate, stagger }) => {
       if (!ref.current) return
-      anime({
-        targets: ref.current.querySelectorAll('.ha'),
-        opacity: [0, 1], translateY: [40, 0],
-        delay: anime.stagger(100, { start: 100 }),
-        duration: 900, easing: 'easeOutExpo',
+      animate(ref.current.querySelectorAll('.ha'), {
+        opacity: [0, 1], translateY: [30, 0],
+        delay: stagger(90, { start: 80 }),
+        duration: 800, easing: 'easeOutExpo',
       })
-      anime({
-        targets: '.hero-photo-frame',
-        opacity: [0, 1], translateX: [-50, 0],
-        duration: 1000, delay: 200, easing: 'easeOutExpo',
+      animate('.hero-photo-frame', {
+        opacity: [0, 1], translateX: [-40, 0],
+        duration: 900, delay: 100, easing: 'easeOutExpo',
       })
+    }).catch(() => {
+      // fallback: make visible without animation
+      if (ref.current) {
+        ref.current.querySelectorAll('.ha').forEach(el => { el.style.opacity = '1'; el.style.transform = 'none' })
+      }
+      const f = document.querySelector('.hero-photo-frame')
+      if (f) { f.style.opacity = '1'; f.style.transform = 'none' }
     })
   }, [visible])
 
@@ -411,16 +416,18 @@ function TechStack() {
 function PCard({ p, i }) {
   const ref = useRef(null)
   useEffect(() => {
-    import('animejs').then(({ default: anime }) => {
-      if (!ref.current) return
-      const obs = new IntersectionObserver(([e]) => {
-        if (e.isIntersecting) {
-          anime({ targets: ref.current, opacity:[0,1], translateY:[50,0], duration:800, delay:i*100, easing:'easeOutExpo' })
-          obs.disconnect()
-        }
-      }, { threshold: 0.08 })
-      obs.observe(ref.current)
-    })
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        obs.disconnect()
+        import('animejs').then(({ animate }) => {
+          animate(el, { opacity:[0,1], translateY:[40,0], duration:750, delay: i*80, easing:'easeOutExpo' })
+        }).catch(() => { el.style.opacity = '1'; el.style.transform = 'none' })
+      }
+    }, { threshold: 0.06 })
+    obs.observe(el)
+    return () => obs.disconnect()
   }, [i])
 
   const sc = { prod:'s-prod', dev:'s-dev', done:'s-done' }[p.status]
@@ -559,12 +566,16 @@ function Footer() {
 /* ─── FADE OBSERVER ─────────────────────────────────────── */
 function useFadeObserver() {
   useEffect(() => {
+    const show = (el) => el.classList.add('visible')
     const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
-      { threshold: 0.07 }
+      entries => entries.forEach(e => { if (e.isIntersecting) { show(e.target); obs.unobserve(e.target) } }),
+      { threshold: 0.04, rootMargin: '0px 0px -40px 0px' }
     )
-    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el))
-    return () => obs.disconnect()
+    const els = document.querySelectorAll('.fade-up')
+    els.forEach(el => obs.observe(el))
+    // fallback: show after 3s in case observer fails
+    const t = setTimeout(() => els.forEach(show), 3000)
+    return () => { obs.disconnect(); clearTimeout(t) }
   }, [])
 }
 
