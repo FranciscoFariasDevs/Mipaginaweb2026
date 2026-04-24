@@ -102,12 +102,9 @@ const STACKS = [
 ]
 
 const BOOT_MSGS = [
-  'INICIALIZANDO SISTEMA...',
+  'INICIANDO...',
   'CARGANDO PORTAFOLIO...',
-  'COMPILANDO PROYECTOS...',
-  'VERIFICANDO EXPERIENCIA...',
-  'CARGANDO ACTIVOS...',
-  'LISTO',
+  'LISTO ✓',
 ]
 
 /* ─── ICONS ─────────────────────────────────────────────── */
@@ -126,7 +123,7 @@ function BootScreen({ onDone }) {
   const glowRef = useRef(null)
 
   useEffect(() => {
-    const total = 2400
+    const total = 900
     const start = performance.now()
     let frame
 
@@ -142,8 +139,8 @@ function BootScreen({ onDone }) {
       else {
         setTimeout(() => {
           setExit(true)
-          setTimeout(onDone, 700)
-        }, 400)
+          setTimeout(onDone, 400)
+        }, 150)
       }
     }
     frame = requestAnimationFrame(tick)

@@ -3,7 +3,7 @@
 ═══════════════════════════════════════════════════════ */
 .boot-screen {
   position: fixed; inset: 0; z-index: 9999;
-  background: #060810;
+  background: #0d1628;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 0;
   overflow: hidden;
@@ -183,7 +183,7 @@
   padding: 18px 56px; transition: all .4s ease;
 }
 .navbar.scrolled {
-  background: rgba(14,17,23,.92); backdrop-filter: blur(24px) saturate(160%);
+  background: rgba(18,28,48,.94); backdrop-filter: blur(24px) saturate(160%);
   border-bottom: 1px solid rgba(0,200,255,.15); padding: 12px 56px;
   box-shadow: 0 4px 40px rgba(0,0,0,.5), 0 1px 0 rgba(0,200,255,.1);
 }
@@ -244,8 +244,8 @@
    HERO — PS STYLE
 ═══════════════════════════════════════════════════════ */
 .hero-section {
-  min-height: 100vh; display: flex; align-items: center;
-  padding: 110px 56px 70px; position: relative; overflow: hidden;
+  display: flex; align-items: center;
+  padding: 100px 56px 80px; position: relative; overflow: hidden;
 }
 .hero-inner {
   max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 1;
@@ -394,7 +394,7 @@
 }
 @keyframes xp-grow { to { width: 72%; } }
 
-.hero-desc { font-size: 15.5px; color: #7a8499; line-height: 1.8; }
+.hero-desc { font-size: 15.5px; color: #9ab5d8; line-height: 1.8; }
 .hero-desc strong { color: #dde4f0; }
 
 .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -428,12 +428,18 @@
 .pill:hover { background: rgba(0,200,255,.1); border-color: rgba(0,200,255,.3); color: #dde4f0; }
 
 @media(max-width:900px) {
-  .hero-section { padding: 90px 20px 60px; }
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .hero-section { padding: 80px 20px 60px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
   .hero-photo-col { order: -1; }
   .hero-ctas,.hero-pills,.hero-badge { justify-content: center; }
-  .hero-photo-frame,.hero-photo { width: 220px; }
+  .hero-photo-frame,.hero-photo { width: 200px; }
   .hero-role-box { text-align: left; }
+}
+@media(max-width:480px) {
+  .hero-section { padding: 72px 16px 48px; }
+  .hero-name { font-size: 2rem; }
+  .hero-photo-frame,.hero-photo { width: 160px; }
+  .hero-text { gap: 16px; }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -463,7 +469,8 @@
 .fade-up.visible { opacity:1; transform:translateY(0); }
 .d1 { transition-delay:.1s; } .d2 { transition-delay:.2s; } .d3 { transition-delay:.3s; }
 
-@media(max-width:768px){ .section { padding: 70px 20px; } }
+@media(max-width:768px){ .section { padding: 60px 20px; } }
+@media(max-width:480px){ .section { padding: 50px 16px; } }
 
 /* ═══════════════════════════════════════════════════════
    ABOUT
@@ -492,7 +499,7 @@
   letter-spacing: .08em;
 }
 .about-text-col { display: flex; flex-direction: column; gap: 16px; }
-.about-text-col p { color: #7a8499; font-size: 15px; line-height: 1.85; }
+.about-text-col p { color: #9ab5d8; font-size: 15px; line-height: 1.85; }
 .about-text-col strong { color: #dde4f0; }
 .about-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
 .about-chip {
@@ -562,7 +569,7 @@
 ═══════════════════════════════════════════════════════ */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
 }
 
@@ -591,24 +598,24 @@
 /* ── MEDIA ── */
 .pcard-media {
   height: 220px; overflow: hidden; position: relative;
-  background: #0a0c14; flex-shrink: 0;
+  background: #1b2844; flex-shrink: 0;
 }
 .pcard-banner {
   width: 100%; height: 100%;
   display: block; transition: transform .6s cubic-bezier(.23,1,.32,1);
-  object-position: center top;
+  object-position: center center;
 }
 .pcard:hover .pcard-banner { transform: scale(1.07); }
 
-/* dark gradient overlay at bottom so text is readable */
+/* subtle overlay — doesn't hide the image */
 .pcard-media-overlay {
   position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(
     180deg,
     transparent 0%,
-    transparent 40%,
-    rgba(10,12,20,.7) 80%,
-    rgba(10,12,20,.95) 100%
+    transparent 55%,
+    rgba(20,30,50,.45) 80%,
+    rgba(20,30,50,.75) 100%
   );
 }
 
@@ -697,7 +704,7 @@
 .s-dev  { background: rgba(255,107,53,.1); color: var(--accent3); border: 1px solid rgba(255,107,53,.25); }
 .s-prod { background: rgba(0,200,255,.1);  color: var(--accent);  border: 1px solid rgba(0,200,255,.25); }
 
-.pcard-desc { font-size: 13px; color: #5a6478; line-height: 1.75; flex: 1; }
+.pcard-desc { font-size: 13px; color: #8faac8; line-height: 1.75; flex: 1; }
 .pcard-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 .ptag {
   font-size: 10px; font-weight: 600; padding: 2px 9px;
@@ -713,7 +720,8 @@
 }
 .pcard-link:hover { color: #67e8f9; gap: 10px; }
 
-@media(max-width:768px) { .projects-grid { grid-template-columns: 1fr; } }
+@media(max-width:640px) { .projects-grid { grid-template-columns: 1fr; } }
+@media(max-width:480px) { .pcard-media { height: 180px; } }
 
 /* ═══════════════════════════════════════════════════════
    WEB WORK
@@ -730,7 +738,7 @@
 .ww-card:hover .ww-top-line { transform: scaleX(1); }
 .ww-icon { font-size: 2.2rem; }
 .ww-card h3 { font-family: 'Space Grotesk',sans-serif; font-size: 20px; font-weight: 700; color: #f0f4ff; }
-.ww-card p { font-size: 14px; color: #5a6478; line-height: 1.75; flex: 1; }
+.ww-card p { font-size: 14px; color: #8faac8; line-height: 1.75; flex: 1; }
 .ww-url { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); margin-top: 4px; }
 @media(max-width:700px){ .ww-grid { grid-template-columns: 1fr; } }
 
@@ -739,7 +747,7 @@
 ═══════════════════════════════════════════════════════ */
 .contact-section { text-align: center; }
 .contact-section .sec-line { margin: 0 auto 48px; }
-.contact-desc { color: #5a6478; font-size: 16px; line-height: 1.8; max-width: 480px; margin: 0 auto 40px; }
+.contact-desc { color: #8faac8; font-size: 16px; line-height: 1.8; max-width: 480px; margin: 0 auto 40px; }
 .contact-wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 .cbtn {
   display: flex; align-items: center; gap: 9px; padding: 12px 22px;

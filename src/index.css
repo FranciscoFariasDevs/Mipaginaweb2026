@@ -3,18 +3,18 @@
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --bg:      #0e1117;
-  --bg2:     #141820;
-  --surface: #1c2030;
-  --surf2:   #242840;
+  --bg:      #141e32;
+  --bg2:     #1b2844;
+  --surface: #1f3054;
+  --surf2:   #283a66;
   --accent:  #00c8ff;
   --accent2: #bf5fff;
   --accent3: #ff6b35;
   --gold:    #ffd166;
   --green:   #06ffa5;
-  --text:    #dde4f0;
-  --muted:   #7a8499;
-  --border:  rgba(0,200,255,.15);
+  --text:    #e4eeff;
+  --muted:   #90a8c8;
+  --border:  rgba(0,200,255,.22);
 }
 
 html { scroll-behavior: smooth; }
