@@ -296,21 +296,22 @@ function Hero({ visible }) {
           <div className="hero-role-box ha" style={{ opacity:0 }}>
             <div className="role-line"><span className="role-icon">🎓</span><span><strong>Ingeniero Civil en Informática</strong></span></div>
             <div className="role-line"><span className="role-icon">💻</span><span>Especialidad en <strong>Desarrollo de Software</strong></span></div>
+            <div className="role-line"><span className="role-icon">🤖</span><span><strong>IA Engineer</strong> · ERP &amp; Intranets a medida</span></div>
             <div className="role-line"><span className="role-icon">🎮</span><span><strong>Diseñador de Videojuegos</strong></span></div>
             <div className="role-line"><span className="role-icon">🛠️</span><span>Técnico Computacional · <strong>Refresca Tu Nae</strong></span></div>
           </div>
 
           <div className="xp-panel ha" style={{ opacity:0 }}>
             <div className="xp-header">
-              <span className="xp-level">⚔ LVL 26 · FULL STACK DEV</span>
+              <span className="xp-level">⚔ LVL 29 · FULL STACK DEV</span>
               <span className="xp-pts">7200 / 10000 XP</span>
             </div>
             <div className="xp-track"><div className="xp-fill" /></div>
           </div>
 
           <p className="hero-desc ha" style={{ opacity:0 }}>
-            Construyo <strong>apps de escritorio, web y móviles</strong> desde Chile 🇨🇱.
-            Creo videojuegos con Godot y Unreal Engine, y soy artista bajo el alias <strong>nvdie_flow</strong>.
+            Construyo <strong>ERP e intranets custom para empresas</strong>, apps de escritorio, web y móviles desde Chile 🇨🇱.
+            Integro <strong>IA</strong> en sistemas reales, creo videojuegos con Godot y Unreal Engine, y soy artista bajo el alias <strong>nvdie_flow</strong>.
           </p>
 
           <div className="hero-ctas ha" style={{ opacity:0 }}>
