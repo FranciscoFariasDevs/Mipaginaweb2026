@@ -612,13 +612,13 @@ function Contact() {
               <span className="social-card-label">Técnico Computacional</span>
             </div>
           </a>
-          <a href="https://open.spotify.com/artist/nvdie-flow" target="_blank" rel="noreferrer" className="social-card sc-sp">
+          <div className="social-card sc-sp" style={{cursor:'default'}}>
             <div className="social-card-icon"><Spotify /></div>
             <div className="social-card-info">
               <span className="social-card-handle">Nvdie Flow</span>
               <span className="social-card-label">Artista en Spotify</span>
             </div>
-          </a>
+          </div>
           <a href="https://github.com/FranciscoFariasDevs" target="_blank" rel="noreferrer" className="social-card sc-gh">
             <div className="social-card-icon"><Gh /></div>
             <div className="social-card-info">
@@ -633,6 +633,19 @@ function Contact() {
               <span className="social-card-label">LinkedIn · Profesional</span>
             </div>
           </a>
+        </div>
+
+        {/* ── Spotify embed ── */}
+        <div className="spotify-wrap fade-up">
+          <div className="spotify-label"><Spotify /> Mi música en Spotify</div>
+          <iframe
+            style={{ borderRadius:'12px' }}
+            src="https://open.spotify.com/embed/artist/3yr5lMphQoU36IaeFbbN80?utm_source=generator"
+            width="100%" height="352" frameBorder="0"
+            allowFullScreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          />
         </div>
 
         {/* ── Formulario ── */}

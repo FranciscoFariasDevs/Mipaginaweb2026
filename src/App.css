@@ -807,6 +807,21 @@
 .sc-li .social-card-icon { background: #0a66c2; color: #fff; }
 
 /* ═══════════════════════════════════════════════════════
+   SPOTIFY EMBED
+═══════════════════════════════════════════════════════ */
+.spotify-wrap {
+  max-width: 680px; margin: 0 auto 32px;
+  background: var(--surface); border: 1px solid rgba(30,215,96,.2);
+  border-radius: 14px; padding: 20px; overflow: hidden;
+}
+.spotify-label {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 14px;
+  font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700;
+  color: #1DB954; letter-spacing: .1em;
+}
+.spotify-label svg { color: #1DB954; }
+
+/* ═══════════════════════════════════════════════════════
    CONTACT FORM
 ═══════════════════════════════════════════════════════ */
 .cform-wrap {
