@@ -560,61 +560,160 @@
 /* ═══════════════════════════════════════════════════════
    PROJECT CARDS
 ═══════════════════════════════════════════════════════ */
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(320px,1fr)); gap: 20px; }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
 .pcard {
-  background: var(--surface); border: 1px solid rgba(255,255,255,.07);
-  position: relative; overflow: hidden; transition: transform .4s cubic-bezier(.23,1,.32,1), box-shadow .4s, border-color .4s;
-  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,.08);
+  position: relative; overflow: hidden;
+  transition: transform .4s cubic-bezier(.23,1,.32,1), box-shadow .4s, border-color .4s;
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  display: flex; flex-direction: column;
 }
 .pcard:hover {
-  transform: translateY(-8px);
-  border-color: rgba(0,200,255,.4);
-  box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 40px rgba(0,200,255,.08);
+  transform: translateY(-10px);
+  border-color: rgba(0,200,255,.45);
+  box-shadow: 0 28px 70px rgba(0,0,0,.7), 0 0 50px rgba(0,200,255,.1);
 }
+
+/* top accent line slides in on hover */
 .pcard-accent-line {
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, #00c8ff, #bf5fff, transparent);
-  transform: scaleX(0); transform-origin: left; transition: transform .5s;
+  position: absolute; top: 0; left: 0; right: 0; height: 2px; z-index: 10;
+  background: linear-gradient(90deg, #00c8ff, #bf5fff, #ff6b35);
+  transform: scaleX(0); transform-origin: left; transition: transform .5s cubic-bezier(.23,1,.32,1);
 }
 .pcard:hover .pcard-accent-line { transform: scaleX(1); }
-.pcard-media { height: 185px; overflow: hidden; position: relative; background: rgba(0,0,0,.3); }
-.pcard-media img { width:100%; height:100%; object-fit:cover; transition: transform .5s; display: block; }
-.pcard:hover .pcard-media img { transform: scale(1.06); }
+
+/* ── MEDIA ── */
+.pcard-media {
+  height: 220px; overflow: hidden; position: relative;
+  background: #0a0c14; flex-shrink: 0;
+}
+.pcard-banner {
+  width: 100%; height: 100%;
+  display: block; transition: transform .6s cubic-bezier(.23,1,.32,1);
+  object-position: center top;
+}
+.pcard:hover .pcard-banner { transform: scale(1.07); }
+
+/* dark gradient overlay at bottom so text is readable */
+.pcard-media-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(10,12,20,.7) 80%,
+    rgba(10,12,20,.95) 100%
+  );
+}
+
+/* scan line effect */
+.pcard-scan {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(0,200,255,.7), transparent);
+  pointer-events: none; z-index: 5;
+  animation: pcard-scanline 4s linear infinite;
+  opacity: 0;
+}
+.pcard:hover .pcard-scan { opacity: 1; }
+@keyframes pcard-scanline {
+  0%   { top: 0%;   opacity: 0; }
+  5%   { opacity: .8; }
+  95%  { opacity: .8; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* logo badge bottom-left of media */
+.pcard-logo-badge {
+  position: absolute; bottom: 10px; left: 12px; z-index: 6;
+  background: rgba(10,12,20,.85); backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,200,255,.2); border-radius: 6px;
+  padding: 4px 8px; display: flex; align-items: center;
+  transition: opacity .3s;
+}
+.pcard-logo-badge img {
+  height: 30px; max-width: 80px; object-fit: contain;
+  filter: brightness(1.1);
+}
+
+/* floating characters (Metal Golpe) */
+.pcard-chars {
+  position: absolute; bottom: 0; right: 0; z-index: 6;
+  display: flex; align-items: flex-end; gap: 0;
+  pointer-events: none;
+}
+.pcard-char {
+  height: 120px; object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(0,200,255,.3));
+  animation: char-float 3s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+.pcard-char:nth-child(2) { height: 100px; margin-left: -20px; }
+@keyframes char-float {
+  0%,100% { transform: translateY(0) scaleX(1); }
+  50%      { transform: translateY(-6px) scaleX(1); }
+}
+
+/* empty state */
 .pcard-media-empty {
-  height: 185px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;
+  height: 220px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px;
   background: linear-gradient(135deg, rgba(0,200,255,.04), rgba(191,95,255,.04));
 }
-.pcard-media-empty img { max-height: 110px; max-width: 75%; object-fit: contain; }
-.pcard-media-empty span { font-size: 3rem; }
-.pcard-body { padding: 20px 22px 22px; }
-.pcard-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-.pcard-icon { font-size: 1.4rem; }
+.pcard-empty-icon { font-size: 4rem; }
+.pcard-empty-label {
+  font-family: 'Orbitron', monospace; font-size: 12px; font-weight: 700;
+  color: rgba(0,200,255,.4); letter-spacing: .15em; text-transform: uppercase;
+}
+
+/* ── BODY ── */
+.pcard-body { padding: 18px 20px 22px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+
+.pcard-top {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
+}
+.pcard-title-group { flex: 1; min-width: 0; }
+.pcard-title {
+  font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 800;
+  color: #f0f4ff; line-height: 1.2; margin-bottom: 3px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pcard-sub {
+  font-size: 11px; color: var(--accent); font-weight: 600;
+  letter-spacing: .06em; font-family: 'JetBrains Mono', monospace;
+}
 .pcard-status {
   font-family: 'Orbitron', monospace; font-size: 9px; font-weight: 700;
   padding: 3px 9px; letter-spacing: .1em; text-transform: uppercase;
+  white-space: nowrap; flex-shrink: 0;
   clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
 }
-.s-done { background: rgba(6,255,165,.1); color: var(--green); border: 1px solid rgba(6,255,165,.25); }
+.s-done { background: rgba(6,255,165,.1);  color: var(--green);   border: 1px solid rgba(6,255,165,.25); }
 .s-dev  { background: rgba(255,107,53,.1); color: var(--accent3); border: 1px solid rgba(255,107,53,.25); }
-.s-prod { background: rgba(0,200,255,.1); color: var(--accent); border: 1px solid rgba(0,200,255,.25); }
-.pcard-title { font-family: 'Space Grotesk',sans-serif; font-size: 19px; font-weight: 700; color: #f0f4ff; margin-bottom: 3px; }
-.pcard-sub { font-size: 12px; color: var(--accent); font-weight: 600; margin-bottom: 10px; letter-spacing: .04em; font-family: 'JetBrains Mono', monospace; }
-.pcard-desc { font-size: 13.5px; color: #5a6478; line-height: 1.7; margin-bottom: 14px; }
-.pcard-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+.s-prod { background: rgba(0,200,255,.1);  color: var(--accent);  border: 1px solid rgba(0,200,255,.25); }
+
+.pcard-desc { font-size: 13px; color: #5a6478; line-height: 1.75; flex: 1; }
+.pcard-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 .ptag {
-  font-size: 10.5px; font-weight: 600; padding: 2px 9px;
-  background: rgba(0,200,255,.07); border: 1px solid rgba(0,200,255,.15); color: #67e8f9;
+  font-size: 10px; font-weight: 600; padding: 2px 9px;
+  background: rgba(0,200,255,.07); border: 1px solid rgba(0,200,255,.14); color: #67e8f9;
   font-family: 'JetBrains Mono', monospace;
   clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 5px 100%, 0 calc(100% - 5px));
 }
 .pcard-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 12px; font-weight: 700; color: var(--accent); text-decoration: none;
-  font-family: 'JetBrains Mono', monospace; letter-spacing: .06em;
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 4px;
+  font-size: 11px; font-weight: 700; color: var(--accent); text-decoration: none;
+  font-family: 'JetBrains Mono', monospace; letter-spacing: .08em;
   transition: gap .25s, color .25s;
 }
 .pcard-link:hover { color: #67e8f9; gap: 10px; }
-@media(max-width:768px){ .projects-grid { grid-template-columns: 1fr; } }
+
+@media(max-width:768px) { .projects-grid { grid-template-columns: 1fr; } }
 
 /* ═══════════════════════════════════════════════════════
    WEB WORK

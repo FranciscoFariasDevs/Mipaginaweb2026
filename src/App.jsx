@@ -3,11 +3,62 @@ import './App.css'
 
 /* ─── DATA ─────────────────────────────────────────────── */
 const PROJECTS = [
-  { id:'facilpos', title:'FacilPos', sub:'// sistema-pos-desktop', desc:'Software de Punto de Venta con inventario, turnos, cuadratura de caja y licencias. Electron + Node.js, funciona 100% sin internet.', tags:['Electron','Node.js','SQLite','JavaScript'], logo:'/logo-facilpos.png', status:'prod', icon:'🏪', github:null },
-  { id:'metal',    title:'Metal Golpe X', sub:'// videojuego-accion-2d', desc:'Arcade estilo Metal Slug ambientado en Santiago. Godot 4.5, personajes históricos, sistema de fichas arcade y parallax scrolling.', tags:['Godot 4.5','GDScript','Pixel Art','Game Dev'], logo:'/logo-metal.png', status:'dev', icon:'🎮', github:'https://github.com/FranciscoFariasDevs' },
-  { id:'perro',    title:'PC del Perro Cobarde', sub:'// ia-retro-chat', desc:'Emula la computadora de Courage the Cowardly Dog con respuestas sarcásticas vía OpenAI. Interfaz retro con scanlines y efectos CRT.', tags:['React','Node.js','OpenAI API','CSS3'], logo:'/logo-perro.png', status:'done', icon:'🖥️', github:'https://github.com/FranciscoFariasDevs' },
-  { id:'poxys',    title:'Poxys', sub:'// red-social-deportiva', desc:'App Flutter tipo Strava para runners y ciclistas. GPS tracking, rutas, comunidad social y estadísticas en tiempo real.', tags:['Flutter','Dart','Supabase','GPS'], logo:'/logo-poxys.png', status:'dev', icon:'🚴', github:null },
-  { id:'rimi',     title:'Rimificador', sub:'// herramienta-lirica', desc:'Web app para encontrar rimas y generar letras. Diseñada para raperos, poetas y compositores que necesitan inspiración.', tags:['JavaScript','Web App','NLP'], logo:null, status:'done', icon:'🎤', github:'https://github.com/FranciscoFariasDevs' },
+  {
+    id:'facilpos',
+    title:'FacilPos',
+    sub:'// sistema-pos-desktop',
+    desc:'Software de Punto de Venta con inventario, turnos, cuadratura de caja y licencias. Electron + Node.js, 100% offline. Desplegado en negocios reales.',
+    tags:['Electron','Node.js','SQLite','JavaScript','React'],
+    banner: '/facilpos-logo.png',   // logo grande centrado como banner
+    logo:   '/facilpos-icon.png',
+    bannerStyle: 'contain',
+    status:'prod', icon:'🏪', github:null,
+  },
+  {
+    id:'metal',
+    title:'Metal Golpe X',
+    sub:'// videojuego-accion-2d',
+    desc:'Arcade estilo Metal Slug ambientado en Santiago. Personajes históricos chilenos jugables, sistema de fichas arcade, parallax scrolling y jefes con IA.',
+    tags:['Godot 4.5','GDScript','Pixel Art','Game Dev'],
+    banner: '/metal-bg.jpg',        // fondo real de Santiago del juego
+    logo:   '/metal-intro.png',     // pantalla intro del juego
+    bannerStyle: 'cover',
+    extraImgs: ['/metal-allende.png', '/metal-pinochet.png'],
+    status:'dev', icon:'🎮', github:'https://github.com/FranciscoFariasDevs',
+  },
+  {
+    id:'perro',
+    title:'PC del Perro Cobarde',
+    sub:'// ia-retro-chat',
+    desc:'Emula la computadora de Courage the Cowardly Dog. Respuestas sarcásticas en tiempo real vía OpenAI, interfaz retro con scanlines y efectos CRT.',
+    tags:['React','Node.js','OpenAI API','CSS3'],
+    banner: '/perro-banner.png',    // imagen de la computadora real
+    logo:   '/perro-bichito.png',   // el perro cobarde
+    bannerStyle: 'contain',
+    status:'done', icon:'🖥️', github:'https://github.com/FranciscoFariasDevs',
+  },
+  {
+    id:'poxys',
+    title:'Poxys',
+    sub:'// red-social-deportiva',
+    desc:'App Flutter tipo Strava para runners y ciclistas chilenos. GPS tracking, rutas, comunidad social y estadísticas en tiempo real. Backend Supabase.',
+    tags:['Flutter','Dart','Supabase','GPS','Firebase'],
+    banner: '/poxys-logo.png',      // logo oficial de Poxys
+    logo:   '/poxys-icon.png',      // ícono de la app
+    bannerStyle: 'contain',
+    status:'dev', icon:'🚴', github:null,
+  },
+  {
+    id:'rimi',
+    title:'Rimificador',
+    sub:'// herramienta-lirica',
+    desc:'Web app para encontrar rimas, generar letras y asistir en la composición musical. Ideal para raperos, poetas y compositores.',
+    tags:['JavaScript','Web App','NLP'],
+    banner: null,
+    logo:   null,
+    bannerStyle: 'cover',
+    status:'done', icon:'🎤', github:'https://github.com/FranciscoFariasDevs',
+  },
 ]
 const WEB_WORKS = [
   { title:'Intranet Beach', url:'https://intranet.beach.cl', icon:'🏖️', desc:'Intranet corporativa completa con autenticación, dashboards y módulos administrativos para empresa costera.', tags:['Intranet','Full Stack','Corporativo'] },
@@ -367,32 +418,74 @@ function PCard({ p, i }) {
       if (!ref.current) return
       const obs = new IntersectionObserver(([e]) => {
         if (e.isIntersecting) {
-          anime({ targets: ref.current, opacity:[0,1], translateY:[40,0], duration:700, delay:i*80, easing:'easeOutExpo' })
+          anime({ targets: ref.current, opacity:[0,1], translateY:[50,0], duration:800, delay:i*100, easing:'easeOutExpo' })
           obs.disconnect()
         }
-      }, { threshold: 0.1 })
+      }, { threshold: 0.08 })
       obs.observe(ref.current)
     })
   }, [i])
+
   const sc = { prod:'s-prod', dev:'s-dev', done:'s-done' }[p.status]
   const sl = { prod:'PRODUCCIÓN', dev:'EN DESARROLLO', done:'COMPLETADO' }[p.status]
+
   return (
     <div className="pcard" ref={ref} style={{ opacity:0 }}>
       <div className="pcard-accent-line" />
-      {p.logo
-        ? <div className="pcard-media"><img src={p.logo} alt={p.title} /></div>
-        : <div className="pcard-media-empty"><span>{p.icon}</span></div>
-      }
+
+      {/* ── MEDIA AREA ── */}
+      <div className="pcard-media">
+        {p.banner ? (
+          <>
+            <img
+              src={p.banner}
+              alt={`${p.title} preview`}
+              className="pcard-banner"
+              style={{ objectFit: p.bannerStyle || 'cover' }}
+            />
+            {/* overlay gradient */}
+            <div className="pcard-media-overlay" />
+            {/* logo badge bottom-left si existe y es distinto del banner */}
+            {p.logo && p.logo !== p.banner && (
+              <div className="pcard-logo-badge">
+                <img src={p.logo} alt={`${p.title} logo`} />
+              </div>
+            )}
+            {/* personajes flotantes para Metal Golpe */}
+            {p.extraImgs && (
+              <div className="pcard-chars">
+                {p.extraImgs.map((src, idx) => (
+                  <img key={idx} src={src} alt="character" className="pcard-char" style={{ animationDelay:`${idx * .3}s` }} />
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="pcard-media-empty">
+            <span className="pcard-empty-icon">{p.icon}</span>
+            <span className="pcard-empty-label">{p.title}</span>
+          </div>
+        )}
+        {/* scan line */}
+        <div className="pcard-scan" />
+      </div>
+
+      {/* ── BODY ── */}
       <div className="pcard-body">
         <div className="pcard-top">
-          <span className="pcard-icon">{p.icon}</span>
+          <div className="pcard-title-group">
+            <h3 className="pcard-title">{p.title}</h3>
+            <p className="pcard-sub">{p.sub}</p>
+          </div>
           <span className={`pcard-status ${sc}`}>{sl}</span>
         </div>
-        <h3 className="pcard-title">{p.title}</h3>
-        <p className="pcard-sub">{p.sub}</p>
         <p className="pcard-desc">{p.desc}</p>
         <div className="pcard-tags">{p.tags.map(t => <span key={t} className="ptag">{t}</span>)}</div>
-        {p.github && <a href={p.github} target="_blank" rel="noreferrer" className="pcard-link"><Gh /> GITHUB <Arr /></a>}
+        {p.github && (
+          <a href={p.github} target="_blank" rel="noreferrer" className="pcard-link">
+            <Gh /> VER EN GITHUB <Arr />
+          </a>
+        )}
       </div>
     </div>
   )
