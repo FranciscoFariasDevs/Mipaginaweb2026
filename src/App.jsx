@@ -54,15 +54,15 @@ const PROJECTS = [
     sub:'// herramienta-lirica',
     desc:'Web app para encontrar rimas, generar letras y asistir en la composición musical. Ideal para raperos, poetas y compositores.',
     tags:['JavaScript','Web App','NLP'],
-    banner: null,
+    banner: '/rimificador2.png',
     logo:   null,
     bannerStyle: 'cover',
     status:'done', icon:'🎤', github:'https://github.com/FranciscoFariasDevs',
   },
 ]
 const WEB_WORKS = [
-  { title:'Intranet Beach', url:'https://intranet.beach.cl', icon:'🏖️', desc:'Intranet corporativa completa con autenticación, dashboards y módulos administrativos para empresa costera.', tags:['Intranet','Full Stack','Corporativo'] },
-  { title:'Proimtec',       url:'https://www.proimtec.cl',    icon:'⚙️', desc:'Sitio web corporativo para empresa de tecnología e ingeniería. Diseño responsive y optimizado para SEO.', tags:['Web Corp','Diseño','SEO'] },
+  { title:'Intranet Beach', url:'https://intranet.beach.cl', icon:'🏖️', img:'/intranet-beach.png', desc:'Intranet corporativa completa con autenticación, dashboards y módulos administrativos para empresa costera.', tags:['Intranet','Full Stack','Corporativo'] },
+  { title:'Proimtec',       url:'https://www.proimtec.cl',    icon:'⚙️', img:'/proimtec.png',      desc:'Sitio web corporativo para empresa de tecnología e ingeniería. Diseño responsive y optimizado para SEO.', tags:['Web Corp','Diseño','SEO'] },
 ]
 const SKILLS = [
   { name:'JavaScript / TypeScript', pct:90, color:'#f7df1e' },
@@ -517,15 +517,21 @@ function WebWork() {
         <div className="sec-eyebrow"><div className="sec-eyebrow-line" /><span className="sec-label">CLIENTES WEB</span></div>
         <h2 className="sec-title">Sitios para <span>Clientes</span></h2>
         <div className="sec-line" />
-        <div className="ww-grid">
-          {WEB_WORKS.map(w => (
-            <a key={w.title} href={w.url} target="_blank" rel="noreferrer" className="ww-card fade-up">
-              <div className="ww-top-line" />
-              <div className="ww-icon">{w.icon}</div>
-              <h3>{w.title}</h3>
-              <p>{w.desc}</p>
-              <div className="pcard-tags">{w.tags.map(t => <span key={t} className="ptag">{t}</span>)}</div>
-              <span className="ww-url">{w.url.replace('https://','')}</span>
+        <div className="ww-list">
+          {WEB_WORKS.map((w, i) => (
+            <a key={w.title} href={w.url} target="_blank" rel="noreferrer" className={`ww-item fade-up ${i % 2 === 1 ? 'ww-item-reverse' : ''}`}>
+              <div className="ww-item-img-wrap">
+                <img src={w.img} alt={w.title} className="ww-item-img" />
+                <div className="ww-item-img-overlay" />
+                <div className="ww-top-line" />
+              </div>
+              <div className="ww-item-info">
+                <div className="ww-item-eyebrow">{w.icon} ENTREGADO</div>
+                <h3>{w.title}</h3>
+                <p>{w.desc}</p>
+                <div className="pcard-tags">{w.tags.map(t => <span key={t} className="ptag">{t}</span>)}</div>
+                <span className="ww-url">↗ {w.url.replace('https://','')}</span>
+              </div>
             </a>
           ))}
         </div>

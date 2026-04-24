@@ -3,7 +3,7 @@
 ═══════════════════════════════════════════════════════ */
 .boot-screen {
   position: fixed; inset: 0; z-index: 9999;
-  background: #0d1628;
+  background: #111e38;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 0;
   overflow: hidden;
@@ -183,7 +183,7 @@
   padding: 18px 56px; transition: all .4s ease;
 }
 .navbar.scrolled {
-  background: rgba(18,28,48,.94); backdrop-filter: blur(24px) saturate(160%);
+  background: rgba(22,34,60,.95); backdrop-filter: blur(24px) saturate(160%);
   border-bottom: 1px solid rgba(0,200,255,.15); padding: 12px 56px;
   box-shadow: 0 4px 40px rgba(0,0,0,.5), 0 1px 0 rgba(0,200,255,.1);
 }
@@ -724,23 +724,62 @@
 @media(max-width:480px) { .pcard-media { height: 180px; } }
 
 /* ═══════════════════════════════════════════════════════
-   WEB WORK
+   WEB WORK — vertical list with screenshot
 ═══════════════════════════════════════════════════════ */
-.ww-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.ww-card {
-  background: var(--surface); border: 1px solid rgba(255,255,255,.07);
-  padding: 32px; text-decoration: none; color: inherit; position: relative; overflow: hidden;
-  display: flex; flex-direction: column; gap: 12px; transition: all .4s;
-  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+.ww-list { display: flex; flex-direction: column; gap: 32px; }
+
+.ww-item {
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 0;
+  border: 1px solid rgba(0,200,255,.15); border-radius: 8px;
+  overflow: hidden; text-decoration: none; color: inherit;
+  background: var(--surface); transition: all .4s;
+  position: relative;
 }
-.ww-card:hover { transform: translateY(-6px); border-color: rgba(0,200,255,.35); box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 30px rgba(0,200,255,.08); }
-.ww-top-line { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #00c8ff, #bf5fff, transparent); transform: scaleX(0); transform-origin: left; transition: transform .5s; }
-.ww-card:hover .ww-top-line { transform: scaleX(1); }
-.ww-icon { font-size: 2.2rem; }
-.ww-card h3 { font-family: 'Space Grotesk',sans-serif; font-size: 20px; font-weight: 700; color: #f0f4ff; }
-.ww-card p { font-size: 14px; color: #8faac8; line-height: 1.75; flex: 1; }
-.ww-url { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); margin-top: 4px; }
-@media(max-width:700px){ .ww-grid { grid-template-columns: 1fr; } }
+.ww-item:hover { border-color: rgba(0,200,255,.4); box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 40px rgba(0,200,255,.07); transform: translateY(-4px); }
+.ww-item-reverse { direction: rtl; }
+.ww-item-reverse > * { direction: ltr; }
+
+.ww-item-img-wrap {
+  position: relative; overflow: hidden; min-height: 260px;
+}
+.ww-item-img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+  display: block; transition: transform .6s cubic-bezier(.23,1,.32,1);
+}
+.ww-item:hover .ww-item-img { transform: scale(1.04); }
+.ww-item-img-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, transparent 70%, rgba(31,48,84,.9) 100%);
+}
+.ww-item-reverse .ww-item-img-overlay {
+  background: linear-gradient(270deg, transparent 70%, rgba(31,48,84,.9) 100%);
+}
+.ww-top-line {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #00c8ff, #bf5fff);
+  transform: scaleX(0); transform-origin: left; transition: transform .5s;
+}
+.ww-item:hover .ww-top-line { transform: scaleX(1); }
+
+.ww-item-info {
+  padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; justify-content: center;
+}
+.ww-item-eyebrow {
+  font-family: 'Orbitron', monospace; font-size: 10px; font-weight: 700;
+  letter-spacing: .15em; color: var(--green);
+  display: flex; align-items: center; gap: 6px;
+}
+.ww-item-info h3 { font-family: 'Space Grotesk',sans-serif; font-size: 22px; font-weight: 800; color: #f0f4ff; }
+.ww-item-info p  { font-size: 14px; color: #8faac8; line-height: 1.75; }
+.ww-url { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); margin-top: 4px; transition: letter-spacing .3s; }
+.ww-item:hover .ww-url { letter-spacing: .06em; }
+
+@media(max-width:768px) {
+  .ww-item,.ww-item-reverse { grid-template-columns: 1fr; direction: ltr; }
+  .ww-item-img-wrap { min-height: 200px; }
+  .ww-item-img-overlay { background: linear-gradient(180deg, transparent 60%, rgba(31,48,84,.9) 100%) !important; }
+  .ww-item-info { padding: 20px; }
+}
 
 /* ═══════════════════════════════════════════════════════
    CONTACT
